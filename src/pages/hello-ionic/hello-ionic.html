@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>The SongBook</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="tabs-songbook">
+    <a class="button" ng-click="maptype='road'" ng-class="{selected: maptype=='road' }">검색</a>
+    <a class="button" ng-click="maptype='satellite'" ng-class="{selected: maptype=='satellite' }">신곡</a>
+    <a class="button" ng-click="maptype='hybrid'" ng-class="{selected: maptype=='hybrid' }">인기곡</a>
+  </div>
+
+  <div class="radio-songbook">
+    <input type="radio" name="songtag" id="ky"/><label for="ky">금영</label>
+    <input type="radio" name="songtag" id="tj"/><label for="tj">태진</label>
+  </div>
+
+  <ion-toolbar color="light">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+  <div>
+    <ion-segment>
+      <ion-segment-button value="제목">
+        제목
+      </ion-segment-button>
+      <ion-segment-button value="가수">
+        가수
+      </ion-segment-button>
+      <ion-segment-button value="작곡">
+        작곡
+      </ion-segment-button>
+      <ion-segment-button value="작사">
+        작사
+      </ion-segment-button>
+      <ion-segment-button value="가사">
+        가사
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let person of song">
+      <ion-avatar item-left>
+        <img src="{{person.picture.thumbnail}}">
+      </ion-avatar>
+      <h2>{{person.name.first}} {{person.name.last}}</h2>
+      <p>{{person.gender}}</p>
+    </ion-item>
+  </ion-list>
+
+  <!-- <ion-list>
+    <ion-item *ngFor="let list of lists">
+      <ion-thumbnail item-left>
+        {{list.index}}
+      </ion-thumbnail>
+      <h2>{{list.title}}</h2>
+      <p>{{list.note}}</p>
+      <button item-right style="background: url(img/like_btn.png) center center no-repeat; background-size: 3rem; padding: 1rem; text-indent: -9999px;">즐겨찾기</button>
+    </ion-item>
+  </ion-list> -->
+
+</ion-content>
