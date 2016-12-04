@@ -14,6 +14,7 @@ export class SongService {
 
   constructor(public http: Http) {
     console.log('Hello SongService Provider');
+    this.load();
   }
 
   load(){
@@ -21,13 +22,20 @@ export class SongService {
       return Promise.resolve(this.data1);
     }
     return new Promise(resolve => {
-      this.http.get('https://randomuser.me/api/?results=10&seed=foobar')
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data1 = data.results;
+      this.http.get('data/data.json').subscribe(res => { // .map(res => res.json())
+          this.data1 = res.json();
           resolve(this.data1);
+          // console.log(this.data1);
         });
     });
   }
+  // 
+  // filterItems(searchTerm){
+  //
+  //     return this.data1.filter((item) => {
+  //         return item.name.first.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+  //     });
+  //
+  // }
 
 }

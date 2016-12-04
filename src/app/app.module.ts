@@ -5,6 +5,7 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { MapPage } from '../pages/Map/map';
+import { SongService } from '../providers/song-service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,6 @@ import { MapPage } from '../pages/Map/map';
     ListPage,
     MapPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SongService]
 })
 export class AppModule {}
